@@ -6,8 +6,16 @@
 /*   By: kiteixei <kiteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:58:11 by kiteixei          #+#    #+#             */
-/*   Updated: 2025/12/08 18:58:13 by kiteixei         ###   ########.fr       */
+/*   Updated: 2025/12/22 02:48:39 by kiteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
+template <typename T,typename B>
+{
+    void createTab(T *array,size_t len)
+    {
+        
+        for(array)
+    }
+    
+};
