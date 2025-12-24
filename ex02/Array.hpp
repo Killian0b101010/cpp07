@@ -57,7 +57,7 @@ Array<T>::Array(unsigned int n)
 template <typename T> 
 Array<T>::Array(const Array &cpy)
 {
-    _array._arrLength = cpy._arrLength;
+    _arrLength = cpy._arrLength;
     _array = new T[_arrLength];
     for(size_t i = 0; i < cpy._arrLength;i++)
         _array[i] = cpy._array[i];
@@ -93,5 +93,5 @@ T const &Array<T>::operator[](size_t index)const
 }
 
 template <typename T> 
-size_t size(){return(_arrLength);}
+size_t Array<T>::size() const {return(_arrLength);}
 #endif
