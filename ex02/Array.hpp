@@ -76,11 +76,20 @@ Array<T> &Array <T>::operator=(const Array &cpy)
     }
     return(*this);
 }
+
+class IncorrectIndex : public std::exception
+{
+  const char *what (void) const throw()
+  {
+    return("Index incorrect wsh");
+  }
+};
+
 template <typename T> 
 T &Array<T>::operator[](size_t index)
 {
     if(index >= _arrLength || index < 0)
-        throw(std::out_of_range("index incorrect"));
+        throw IncorrectIndex();
     return(_array[index]);
 }
 
@@ -88,10 +97,11 @@ template <typename T>
 T const &Array<T>::operator[](size_t index)const
 {
      if(index >= _arrLength || index < 0)
-        throw(std::out_of_range("index incorrect"));
+        throw IncorrectIndex();
     return(_array[index]);
 }
 
 template <typename T> 
 size_t Array<T>::size() const {return(_arrLength);}
+
 #endif
