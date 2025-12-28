@@ -6,9 +6,10 @@
 /*   By: kiteixei <kiteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 17:25:26 by kiteixei          #+#    #+#             */
-/*   Updated: 2025/12/13 17:39:25 by kiteixei         ###   ########.fr       */
+/*   Updated: 2025/12/27 20:38:09 by kiteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "iter.hpp"
 #include <iterator>
 void toMaj(char &c) {
@@ -32,6 +33,7 @@ int main(void) {
   ::iter(&test[0], 4, toMaj);
   std::cout << std::endl;
   ::iter(&test[0], 4, toMin);
-  ::iter(&n[2], 4, ft_modify);
+  std::cout << std::endl;
+  ::iter(&n[3], 1, ft_modify);
   ::iter(n, 4, ft_print_int);
 }

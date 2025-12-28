@@ -6,7 +6,7 @@
 /*   By: kiteixei <kiteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/08 18:53:03 by kiteixei          #+#    #+#             */
-/*   Updated: 2025/12/22 03:10:48 by kiteixei         ###   ########.fr       */
+/*   Updated: 2025/12/28 21:54:50 by kiteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ Array <T>::Array() : _array(NULL), _arrLength(0)
 template<typename T> 
 Array<T>::~Array()
 {
-    delete _array;
+    delete []_array;
 }
 
 template<typename T> 
@@ -63,32 +63,34 @@ Array<T>::Array(const Array &cpy)
         _array[i] = cpy._array[i];
 }
 
-template <typename T> 
-Array<T> &Array <T>::operator=(const Array &cpy)
+
+template<typename T>
+Array<T>& Array<T>::operator=(const Array& cpy)
 {
-    if(this != cpy)
+    if (this != &cpy)
     {
-        delete _array; 
+        delete[] _array;
+        _arrLength = cpy._arrLength;
         _array = new T[_arrLength];
-        cpy._array = new T[_arrLength];
-        for(int i = 0; i < cpy._arrLength;i++)
+
+        for (size_t i = 0; i < _arrLength; ++i)
             _array[i] = cpy._array[i];
     }
-    return(*this);
+    return *this;
 }
 
 class IncorrectIndex : public std::exception
 {
   const char *what (void) const throw()
   {
-    return("Index incorrect wsh");
+    return("Index incorrect");
   }
 };
 
 template <typename T> 
 T &Array<T>::operator[](size_t index)
 {
-    if(index >= _arrLength || index < 0)
+    if(index >= _arrLength)
         throw IncorrectIndex();
     return(_array[index]);
 }
@@ -96,7 +98,7 @@ T &Array<T>::operator[](size_t index)
 template <typename T> 
 T const &Array<T>::operator[](size_t index)const
 {
-     if(index >= _arrLength || index < 0)
+     if(index >= _arrLength)
         throw IncorrectIndex();
     return(_array[index]);
 }
